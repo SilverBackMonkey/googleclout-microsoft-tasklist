@@ -1,0 +1,105 @@
+    <script src="https://unpkg.com/@microsoft/mgt/dist/bundle/mgt-loader.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <mgt-msal2-provider
+      client-id="65913b83-1c00-4a26-b4c5-2250c6dfd2f3"
+      login-type="redirect"
+      authority="https://login.microsoftonline.com/common"
+    ></mgt-msal2-provider>
+    <mgt-proxy-provider
+      graph-proxy-url="https://wpintegrate.net/wpi-proxy.php"
+    ></mgt-proxy-provider>
+
+ 
+    <h1>Planner Tasks</h1>
+    <mgt-tasks></mgt-tasks>
+    
+    <!--
+https://docs.microsoft.com/en-us/graph/toolkit/components/tasks
+
+read-only.
+hide-header
+hide-options
+initial-id="planner_id/folder_id"
+initial-bucket-id="bucket_id"
+target-id="planner_id/folder_id"
+target-bucket-id="bucket_id"
+group-id
+
+
+
+To Show the login button using Microsoft graph toolkit
+[ m365_mgt_login_button appid=”65913b83-xxxx-xxxx-xxxx-2250c6dfd2f3″ tenant_id=”b7e28bed-xxxx-xxxx-xxxx-ffb159f2634c” redirect_url=”pageurl” client_area_url=”pageurl” signed_in_button=”Private Client Area”]
+
+To Show the task view using Microsoft graph toolkit
+[o365_tasks id=”tasklist1″ template=”ms_tasks.php” group_id=” read_only=”true/false” initial_id=” hide_header=’true/false’ data_source=’planner’ hide_options=” target_id=”]
+
+read_only: A Boolean to set the task interface to be read only (no adding or removing tasks). Default is false.
+initial_id=”folder_id”: A string ID to set the initially displayed folder to the provided ID.
+hide_header: A Boolean to show or hide the header of the component. Default is false.
+hide-options: A Boolean to show or hide the options in tasks. Default is false.
+target-id=”folder_id”: A string ID to lock the tasks interface to the provided folder ID.
+    -->
+
+
+    <table aria-label="Properties" class="table table-sm">
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>read-only</td>
+<td>readOnly</td>
+<td>A Boolean to set the task interface to be read only (no adding or removing tasks). Default is <code>false</code>.</td>
+</tr>
+<tr>
+<td>hide-header</td>
+<td>hideHeader</td>
+<td>A Boolean to show or hide the header of the component. Default is <code>false</code>.</td>
+</tr>
+<tr>
+<td>hide-options</td>
+<td>hideOptions</td>
+<td>A Boolean to show or hide the options in tasks. Default is <code>false</code>.</td>
+</tr>
+<tr>
+<td>initial-id="planner_id/folder_id"</td>
+<td>initialId</td>
+<td>A string ID to set the initially displayed planner or folder to the provided ID.</td>
+</tr>
+<tr>
+<td>initial-bucket-id="bucket_id"</td>
+<td>initialBucketId</td>
+<td>A string ID to set the initially displayed bucket (Planner Data-Source Only) to the provided ID.</td>
+</tr>
+<tr>
+<td>target-id="planner_id/folder_id"</td>
+<td>targetId</td>
+<td>A string ID to lock the tasks interface to the provided planner or folder ID.</td>
+</tr>
+<tr>
+<td>target-bucket-id="bucket_id"</td>
+<td>targetBucketId</td>
+<td>A string ID to lock the tasks interface to the provided bucket ID (Planner Data-Source Only).</td>
+</tr>
+<tr>
+<td>group-id</td>
+<td>groupId</td>
+<td>A string ID to lock the tasks interface to the group ID.</td>
+</tr>
+<tr>
+<td>N/A</td>
+<td>isNewTaskVisible</td>
+<td>Determines whether new task view is visible at render.</td>
+</tr>
+<tr>
+<td>N/A</td>
+<td>taskFilter</td>
+<td>An optional function to filter which tasks are shown to the user.</td>
+</tr>
+</tbody>
+</table>
+    

@@ -1,0 +1,82 @@
+https://docs.microsoft.com/en-us/graph/toolkit/components/tasks
+
+<?php 
+$taskAttr = '';
+
+if( ! empty( $atts['hide_header'] ) && $atts['hide_header'] == 'yes' ) {
+    $taskAttr .= ' hide-header="'.$atts['hide_header'].'"';
+}
+if( ! empty( $atts['hide_options'] && $atts['hide_options'] == 'yes' ) ) {
+    $taskAttr .= ' hide-options="'.$atts['hide_options'].'"';
+}
+if( ! empty( $atts['data_source'] ) ) {
+    $taskAttr .= ' data-source="'.$atts['data_source'].'"';
+}
+if( ! empty( $atts['read_only'] ) && $atts['read_only'] == 'yes' ) {
+    $taskAttr .= ' read-only="'.$atts['read_only'].'"';
+}
+if( ! empty( $atts['group_id'] ) ) {
+    $taskAttr .= ' group-id="'.$atts['group_id'].'"';
+}
+if( ! empty( $atts['target_bucket_id'] ) ) {
+    $taskAttr .= ' target-bucket-id="'.$atts['target_bucket_id'].'"';
+}
+if( ! empty( $atts['initial_id'] ) ) {
+    $taskAttr .= ' initial-id="'.$atts['initial_id'].'"';
+}
+if( ! empty( $atts['initial_bucket_id'] ) ) {
+    $taskAttr .= ' initial-bucket-id="'.$atts['initial_bucket_id'].'"';
+}
+if( ! empty( $atts['target_id'] ) ) {
+    $taskAttr .= ' target-id="'.$atts['target_id'].'"';
+}
+
+$handle = 'mgt-loader';
+$list = 'enqueued';
+if (wp_script_is( $handle, $list )) {
+    return;
+} else {
+    wp_enqueue_script('mgt-loader');
+    echo '<script src="https://unpkg.com/@microsoft/mgt/dist/bundle/mgt-loader.js"></script>';
+}
+
+?>
+<mgt-tasks 
+    <?php echo $taskAttr;?>
+></mgt-tasks>
+
+<!-- 
+Documentation
+/*
+	hide-header=""	// default is false
+	hide-options=""	// default is false
+	data-source=""	// todo/planner
+	read-only		// default is false
+	initial-id="planner_id/folder_id"
+	initial-bucket-id="bucket_id"
+	target-id="planner_id/folder_id"
+	target-bucket-id="bucket_id"
+	group-id
+	*/
+
+<mgt-tasks data-source="todo">
+    <template data-type="task-details">
+    <div>
+        Owner: {{task.owner}}
+    </div>
+    <div>
+        Importance Level: {{task.importance}}
+    </div>
+    </template>
+</mgt-tasks>
+
+Resource	Permission
+/me/planner/plans	Group.Read.All
+/planner/plans/${id}	Group.Read.All, Group.ReadWrite.All
+/planner/tasks	Group.ReadWrite.All
+/me/outlook/taskGroups	Tasks.Read
+/me/outlook/taskFolders	Tasks.Read, Tasks.ReadWrite
+/me/outlook/tasks	Tasks.ReadWrite
+/groups/${group-id}/planner/plans	Group.Read.All, Group.ReadWrite.All
+
+ -->
